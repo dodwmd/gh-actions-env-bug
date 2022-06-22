@@ -1,0 +1,17 @@
+name: github bug
+description: demonstrate a bug in github composit actions
+inputs:
+  something:
+    description: something to pass in
+runs:
+  using: composite
+  steps:
+    - name: set env variables
+      shell: bash
+      run: |-
+        echo "SOMETHING=${{ inputs.something }}" >> $GITHUB_ENV
+
+    - name: echo something
+      shell: bash
+      run: |-
+        echo ${{env.SOMETHING}}

@@ -1,0 +1,22 @@
+name: unable to override varible
+
+on:
+  workflow_dispatch:
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: first run
+        uses: ./.github/action
+        with:
+          something: fred
+
+      - name: second run
+        uses: ./.github/action
+        with:
+          something: notfred
